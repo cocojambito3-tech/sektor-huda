@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    color: #e5e5e5;
+    background: #000;
+    overflow-x: hidden;
+}
+
+/* ПЕРЕЧЁРКНУТАЯ А */
+body::before {
+    content: "∀̸   ∀̸   ∀̸   ∀̸   ∀̸";
+    position: fixed;
+    inset: -50%;
+    font-size: 100px;
+    color: rgba(255,255,255,0.02);
+    transform: rotate(-20deg);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* СИМВОЛ АРТИСТА */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at center, rgba(0,0,0,0.4), rgba(0,0,0,0.95)),
+        url("symbol.jpg") center/contain no-repeat;
+    animation: breathe 18s ease-in-out infinite;
+    filter: grayscale(100%) contrast(120%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes breathe {
+    0% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.08); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.9; }
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 50px 20px;
+    position: relative;
+    z-index: 5;
+}
+
+/* ЛОГО */
+.logo {
+    text-align: center;
+    letter-spacing: 8px;
+    font-size: 44px;
+    margin-bottom: 60px;
+    text-shadow: 0 0 25px rgba(255,255,255,0.15);
+}
+
+/* АДМИНЫ */
+.admins {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+    z-index: 6;
+}
+
+.admin {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #0f0f0f;
+    border: 2px solid #222;
+    text-decoration: none;
+    color: inherit;
+    transition: 0.4s;
+    position: relative;
+}
+
+.admin:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 40px rgba(255,255,255,0.2);
+}
+
+.admin img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    filter: grayscale(100%);
+    transition: 0.3s;
+}
+
+.admin:hover img {
+    filter: grayscale(0%);
+}
+
+.admin-info {
+    position: absolute;
+    bottom: -95px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    background: rgba(0,0,0,0.9);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.admin:hover .admin-info {
+    opacity: 1;
+}
+
+/* ПРАВИЛА */
+.rules {
+    background: rgba(5,5,5,0.85);
+    border: 1px solid #222;
+    border-radius: 14px;
+    padding: 35px;
+    line-height: 1.7;
+    box-shadow: 0 0 60px rgba(0,0,0,0.9);
+}
+
+.rules h2 {
+    text-align: center;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+.rules p {
+    color: #ccc;
+}
+
+.rules li {
+    margin-bottom: 10px;
+}
+
+.warning {
+    margin-top: 25px;
+    border-top: 1px solid #222;
+    padding-top: 15px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* МОБИЛА */
+@media (max-width: 768px) {
+    .logo { font-size: 28px; }
+    .admin { width: 90px; height: 90px; }
+}
+
+@media (max-width: 480px) {
+    .admins {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .admin-info {
+        position: static;
+        transform: none;
+        opacity: 1;
+        margin-top: 10px;
+    }
+}
+
+
+
